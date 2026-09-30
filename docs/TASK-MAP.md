@@ -1,12 +1,12 @@
-# Operational Resolution Core — Super Task Map
+# ORC — Super Task Map
 
-> Master research-to-product map. This document is intentionally broader than an implementation backlog.
+> Master research map. This is broader than an implementation backlog.
 
 ## Mission
 
-Determine whether heterogeneous operational representations require an explicit resolution layer and, if so, derive the minimum defensible semantics, architecture, implementation and product boundary from evidence.
+Determine whether heterogeneous operational representations require an explicit resolution layer and, if so, derive the minimum defensible semantics, architecture and implementation from evidence.
 
-## Governing principle
+## Governing sequence
 
 ```
 RESEARCH
@@ -20,38 +20,32 @@ SEMANTICS
 REFERENCE IMPLEMENTATION
   ↓
 INTEGRATION
-  ↓
-PRODUCT
 ```
 
-No stage should be treated as complete merely because code exists.
+Productization is downstream and belongs to a separate repository.
 
 ---
 
 # 0. Research Charter
 
-### 0.1 Define the problem
-- [x] State the representation problem.
+- [x] Define the representation problem.
 - [x] State the operational-resolution hypothesis.
-- [x] Define the repository as an independent research laboratory.
+- [x] Establish ORC as an independent research laboratory.
 - [x] Establish no premature novelty claim.
-
-### 0.2 Define research boundaries
 - [x] Distinguish assertion from evidence.
 - [x] Distinguish identity from relation.
 - [x] Distinguish expectation from observation.
-- [x] Distinguish inference from operational resolution.
-- [x] Distinguish attestation from operational resolution.
-- [x] Distinguish state from underlying assertions.
+- [x] Distinguish inference from resolution.
+- [x] Distinguish attestation from resolution.
+- [x] Distinguish operational state from underlying assertions.
 
-### Exit criterion
-The problem can be explained without referring to a specific previous product or implementation.
+**Status:** complete enough for continued validation.
 
 ---
 
 # 1. Conceptual Model
 
-### 1.1 Candidate primitives
+## Candidate primitives
 - [x] Entity
 - [x] Relation
 - [x] Assertion
@@ -59,7 +53,7 @@ The problem can be explained without referring to a specific previous product or
 - [x] Context
 - [x] Resolution
 
-### 1.2 Derived concepts under investigation
+## Derived concepts
 - [x] Observation
 - [x] Expectation
 - [x] Inference
@@ -67,28 +61,26 @@ The problem can be explained without referring to a specific previous product or
 - [x] State
 - [x] Process
 - [x] Consequence
-- [ ] Determine formal status of each concept.
+- [x] Attestation
 
-### 1.3 Semantic questions
-- [ ] Define identity semantics.
-- [ ] Define relation semantics.
-- [ ] Define assertion lifecycle.
-- [ ] Define evidence association.
-- [ ] Define provenance.
-- [ ] Define temporal semantics.
-- [ ] Define context.
-- [ ] Define conflict classes.
-- [ ] Define uncertainty classes.
-- [ ] Define resolution outcomes.
-
-### Exit criterion
-A reviewer can construct a complete example using the model without inventing undocumented concepts.
+## Open semantics
+- [ ] Identity semantics.
+- [ ] Assertion lifecycle.
+- [ ] Evidence association.
+- [ ] Provenance.
+- [ ] Temporal semantics.
+- [ ] Context model.
+- [ ] Conflict classes.
+- [ ] Uncertainty classes.
+- [ ] Resolution outcomes.
+- [ ] Source authority.
+- [ ] Resolution reproducibility/versioning.
 
 ---
 
 # 2. Experimental Program
 
-### 2.1 Existing experiments
+## Completed
 - [x] Identity vs relation.
 - [x] Occurrence vs event.
 - [x] Contradictory assertions.
@@ -109,10 +101,10 @@ A reviewer can construct a complete example using the model without inventing un
 - [x] Minimal primitive reduction.
 - [x] Resolution without winner selection.
 - [x] Operational-question dependence.
-- [x] Comparison against existing fields.
+- [x] Falsification framing against existing fields.
 - [x] Real establishment problem.
 
-### 2.2 New experiments
+## Next experiments
 - [ ] Missing evidence.
 - [ ] Duplicate evidence.
 - [ ] Corrupted evidence.
@@ -131,25 +123,20 @@ A reviewer can construct a complete example using the model without inventing un
 - [ ] Resolution rollback.
 - [ ] Cascading consequences.
 - [ ] Cross-operation dependency.
-- [ ] Security/adversarial input.
+- [ ] Adversarial input.
 - [ ] High-volume ingestion.
-
-### Exit criterion
-Known failure modes are represented explicitly and the model's limits are documented.
 
 ---
 
-# 3. State-of-the-Art / Falsification
+# 3. State of the Art / Falsification
 
-### 3.1 Compare with
+## Compare
 - [ ] Entity Resolution.
-- [ ] Temporal databases.
-- [ ] Temporal reasoning.
+- [ ] Temporal databases/reasoning.
 - [ ] W3C PROV.
 - [ ] Evidence theory.
 - [ ] Dempster-Shafer approaches.
-- [ ] Truth Maintenance Systems.
-- [ ] ATMS.
+- [ ] Truth Maintenance / ATMS.
 - [ ] Belief revision.
 - [ ] Complex Event Processing.
 - [ ] Knowledge graphs.
@@ -158,29 +145,20 @@ Known failure modes are represented explicitly and the model's limits are docume
 - [ ] EPCIS.
 - [ ] Operational data integration patterns.
 
-### 3.2 Comparison matrix
-For each approach:
-- [ ] Primary representation.
-- [ ] Identity model.
-- [ ] Relation model.
-- [ ] Conflict model.
-- [ ] Evidence model.
-- [ ] Provenance model.
-- [ ] Temporal model.
-- [ ] Uncertainty model.
-- [ ] Operational decision model.
+## Comparison dimensions
+- [ ] Representation.
+- [ ] Identity.
+- [ ] Claims/assertions.
+- [ ] Evidence.
+- [ ] Provenance.
+- [ ] Time.
+- [ ] Conflict.
+- [ ] Uncertainty.
+- [ ] Operational question.
 - [ ] Reproducibility.
 - [ ] Integration boundary.
-- [ ] What it solves.
-- [ ] What remains unsolved for our cases.
 
-### Exit criterion
-We can state precisely whether the proposed layer is:
-1. already adequately covered;
-2. a composition of existing capabilities;
-3. an architectural pattern;
-4. a distinct semantic layer;
-5. or still insufficiently defined.
+**Gate:** determine whether ORC is already adequately covered, is a composition of existing capabilities, is an architectural pattern, or remains insufficiently defined.
 
 ---
 
@@ -189,51 +167,38 @@ We can state precisely whether the proposed layer is:
 ## CASE-001 — Goods Receiving
 
 ### Discovery
-- [ ] Map the actual workflow.
+- [ ] Map actual workflow.
 - [ ] Identify actors.
 - [ ] Identify documents.
 - [ ] Identify systems.
 - [ ] Identify identifiers.
-- [ ] Identify sensors.
-- [ ] Identify manual inputs.
+- [ ] Identify observations.
 - [ ] Identify timestamps.
-- [ ] Identify existing conflicts.
-- [ ] Identify the current operational decision.
-
-### Data map
-- [ ] NF-e/XML.
-- [ ] Product identifiers.
-- [ ] Scanner/barcode.
-- [ ] Camera.
-- [ ] Operator.
-- [ ] Physical measurement.
-- [ ] ERP/Apollo state.
-- [ ] Historical records.
+- [ ] Identify manual interventions.
+- [ ] Identify current operational decision.
 
 ### Baseline
 - [ ] Document current workflow without ORC.
 - [ ] Measure manual work.
 - [ ] Identify reconciliation points.
-- [ ] Identify failure modes.
+- [ ] Identify failures.
 - [ ] Identify information currently discarded.
 
 ### Prototype
-- [ ] Represent source assertions.
+- [ ] Preserve source assertions.
 - [ ] Preserve evidence references.
 - [ ] Normalize identifiers.
-- [ ] Build candidate resolution.
-- [ ] Produce operational state.
+- [ ] Associate entities.
+- [ ] Produce candidate resolution.
 - [ ] Preserve conflict.
 - [ ] Record provenance.
+- [ ] Reproduce result from inputs/context/rules.
 
-### Exit criterion
-A real workflow can be represented end-to-end and the difference between the baseline and the proposed resolution layer is measurable.
+**Gate:** represent a real workflow end-to-end and measure the difference.
 
 ---
 
 # 5. Domain Generalization
-
-Test whether the model survives beyond receiving.
 
 - [ ] Sale.
 - [ ] Return.
@@ -242,175 +207,115 @@ Test whether the model survives beyond receiving.
 - [ ] Supplier delivery.
 - [ ] Order fulfillment.
 - [ ] Asset movement.
-- [ ] Compliance workflow.
-- [ ] Physical inspection.
+- [ ] Compliance/inspection.
 
-### Exit criterion
-The model generalizes without introducing ad-hoc primitives for every domain.
+**Gate:** generalization must not require a new primitive for every domain.
 
 ---
 
 # 6. Formal Semantics
 
-Only begin after empirical validation.
+Only after empirical validation.
 
-### 6.1 Data model
 - [ ] Entity schema.
 - [ ] Relation schema.
 - [ ] Assertion schema.
 - [ ] Evidence schema.
 - [ ] Context schema.
-- [ ] Resolution input schema.
-- [ ] Resolution output schema.
-
-### 6.2 Semantics
-- [ ] Identity resolution.
+- [ ] Resolution input/output schema.
+- [ ] Identity semantics.
 - [ ] Temporal validity.
 - [ ] Provenance.
-- [ ] Confidence/uncertainty.
+- [ ] Uncertainty.
 - [ ] Conflict classification.
 - [ ] Source authority.
 - [ ] Rule application.
 - [ ] Human intervention.
 - [ ] Reproducibility.
+- [ ] Invariants.
+- [ ] Resolution lifecycle.
 
-### 6.3 Formalization
-- [ ] Define notation.
-- [ ] Define invariants.
-- [ ] Define resolution lifecycle.
-- [ ] Define determinism requirements.
-- [ ] Define acceptable nondeterminism.
-- [ ] Define audit requirements.
-
-### Exit criterion
-A candidate implementation can be evaluated against explicit semantics rather than intuition.
+**Gate:** implementation can be evaluated against explicit semantics.
 
 ---
 
 # 7. Reference Architecture
 
-### 7.1 Architecture
+- [x] Initial boundary.
+- [x] Observation boundary.
+- [x] Intelligence boundary.
+- [x] Attestation boundary.
+- [x] ERP/downstream boundary.
 - [ ] Ingestion boundary.
 - [ ] Normalization.
 - [ ] Identity association.
-- [ ] Evidence store.
-- [ ] Assertion store.
-- [ ] Context layer.
+- [ ] Evidence persistence.
+- [ ] Assertion persistence.
+- [ ] Context handling.
 - [ ] Resolution engine.
-- [ ] Operational-state projection.
+- [ ] Operational projection.
 - [ ] Audit/provenance.
 - [ ] Integration API.
-
-### 7.2 Non-responsibilities
-- [ ] Document what ORC does not own.
-- [ ] Define boundary with ERP.
-- [ ] Define boundary with inference systems.
-- [ ] Define boundary with attestation systems.
-- [ ] Define boundary with sensors.
-- [ ] Define boundary with workflow engines.
-
-### Exit criterion
-A system architect can place ORC in a real architecture without ambiguity.
 
 ---
 
 # 8. Reference Implementation
 
-Only after the semantic model stabilizes.
+Current implementation proves only a minimal deterministic loop.
 
-### 8.1 Core
-- [ ] Canonical data model.
-- [ ] Assertion ingestion.
+- [x] Entity.
+- [x] Identifier association.
+- [x] Observation.
+- [x] Deterministic resolution.
+- [x] Conflict/uncertain outcomes.
+- [x] Quantity resolution experiment.
+- [x] Vision observation contract.
+- [x] Scenario tests.
+
+Next:
+- [ ] Canonical candidate data model.
 - [ ] Evidence references.
-- [ ] Entity association.
 - [ ] Relation graph.
 - [ ] Context handling.
-- [ ] Resolution pipeline.
-- [ ] Conflict representation.
-- [ ] Provenance.
-- [ ] Resolution replay.
+- [ ] Resolution provenance.
+- [ ] Replay.
+- [ ] Conflict model.
+- [ ] Temporal semantics.
+- [ ] Property/scenario tests.
+- [ ] Performance/security tests.
 
-### 8.2 Interfaces
-- [ ] REST/API boundary.
-- [ ] Event ingestion adapter.
-- [ ] ERP adapter.
-- [ ] Document adapter.
-- [ ] Sensor adapter.
-- [ ] Human-review interface.
-
-### 8.3 Testing
-- [ ] Unit tests.
-- [ ] Property tests.
-- [ ] Scenario tests.
-- [ ] Replay tests.
-- [ ] Conflict tests.
-- [ ] Temporal tests.
-- [ ] Performance tests.
-- [ ] Security tests.
-
-### Exit criterion
-The reference implementation demonstrates the semantics rather than defining them accidentally.
+**Rule:** implementation must demonstrate semantics, not define them accidentally.
 
 ---
 
 # 9. Integration Research
 
-### Integrate with a real operational system
-- [ ] Read-only integration.
+- [ ] Read-only mode.
 - [ ] Shadow mode.
 - [ ] Recommendation mode.
 - [ ] Human-confirmed execution.
 - [ ] Controlled automation.
 
-### Measure
+Measure:
 - [ ] Manual reconciliation reduction.
 - [ ] Identity matching accuracy.
 - [ ] Conflict detection.
 - [ ] False resolution rate.
 - [ ] Human intervention rate.
-- [ ] Processing latency.
+- [ ] Latency.
 - [ ] Auditability.
 - [ ] Operational cost.
 
-### Exit criterion
-The infrastructure demonstrates measurable operational value without requiring unsafe automatic decisions.
-
 ---
 
-# 10. Productization
-
-Productization only begins after the research layer survives validation.
-
-### Possible product forms
-- [ ] Research reference implementation.
-- [ ] Developer SDK.
-- [ ] Resolution API.
-- [ ] Operational integration platform.
-- [ ] Domain-specific product.
-- [ ] Enterprise infrastructure.
-
-### Product questions
-- [ ] Who is the buyer?
-- [ ] Who is the operator?
-- [ ] What decision does the product improve?
-- [ ] What integration cost does it remove?
-- [ ] What evidence does it preserve?
-- [ ] What measurable outcome does it produce?
-- [ ] What must remain human-controlled?
-
-### Exit criterion
-There is a demonstrated problem, a stable semantic core and measurable value.
-
----
-
-# 11. Governance and Safety
+# 10. Governance
 
 - [ ] Audit trail.
 - [ ] Access control.
 - [ ] Data minimization.
 - [ ] Sensitive-data handling.
 - [ ] Human override.
-- [ ] Explainable resolution provenance.
+- [ ] Resolution provenance.
 - [ ] Model/version provenance.
 - [ ] Rule/version provenance.
 - [ ] Reproducibility.
@@ -419,40 +324,36 @@ There is a demonstrated problem, a stable semantic core and measurable value.
 
 ---
 
-# 12. Final Decision Gates
+# Decision Gates
 
-## Gate A — Problem validated
+## A — Problem validated
 Do real systems exhibit the problem?
 
-## Gate B — Existing approaches insufficient
+## B — Existing approaches insufficient
 Is there a meaningful unresolved composition problem?
 
-## Gate C — Semantics stable
+## C — Semantics stable
 Can the model be stated precisely?
 
-## Gate D — Technical feasibility
+## D — Technical feasibility
 Can the model be implemented without pathological complexity?
 
-## Gate E — Operational value
+## E — Operational value
 Does it improve a real workflow measurably?
 
-## Gate F — Product boundary
-Is there a sustainable product or infrastructure offering?
+## F — Product boundary
+Is there evidence for a sustainable product or infrastructure offering?
 
-Only after Gate F should the project be treated as a product initiative.
+The product layer is now maintained separately in **3L0 Vision**. ORC should reach Gate F only after its research gates are supported by evidence.
 
 ---
 
 # Current position
 
-**Completed:** problem framing, initial conceptual model, first experimental program, initial cases and research map.
+**Completed:** problem framing, initial conceptual model, 22 conceptual experiments, initial cases, research methodology, architecture boundaries and minimal reference implementation.
 
 **Current priority:** real-world validation + systematic comparison with existing approaches.
 
-**Not yet justified:** final protocol, public standard, SDK, commercial product architecture.
+**Not yet justified:** final protocol, public standard, SDK, commercial product architecture or novelty claim.
 
----
-
-# Working rule
-
-> Do not build the thing because the architecture looks elegant. Build only what survives the cases.
+> **Do not build the thing because the architecture looks elegant. Build only what survives the cases.**
