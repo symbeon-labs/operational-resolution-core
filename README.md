@@ -156,3 +156,13 @@ The goal is not to rename an existing field, but to determine whether a distinct
 **Research / hypothesis validation**
 
 No claim of novelty is made at this stage.
+
+## Product experience
+
+The current product hypothesis is a simple field interface for operational resolution. Its visual identity is defined around capture, resolution and visible progress rather than e-commerce.
+
+- docs/interface-and-ux.md — screens, flows and UX principles.
+- docs/gamification.md — moderate, operational gamification model.
+- docs/brandbook.md — visual identity and symbol system.
+- assets/orc-symbol.svg — working ORC symbol.
+- spec/orc-identifier-standard.md — optional physical identity-reference/QR direction.
