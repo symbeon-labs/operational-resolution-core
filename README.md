@@ -1,6 +1,6 @@
 # Operational Resolution Core
 
-> An experimental research repository for resolving heterogeneous assertions, evidence, entities, relations and context into traceable operational states.
+> An experimental research repository for resolving heterogeneous assertions, evidence, entities, relations and context into traceable operational representations.
 
 ## Thesis
 
@@ -12,7 +12,7 @@ The central hypothesis is that this problem deserves an explicit computational l
 
 **Operational Resolution**
 
-This layer should preserve underlying assertions and evidence, represent their relationships and context, detect conflicts and uncertainty, and produce a traceable operational representation that downstream systems can act upon.
+The layer should preserve underlying assertions and evidence, represent identity and relations, contextualize information, detect conflicts and uncertainty, and produce a traceable operational representation for a specific operational question.
 
 ```
 REAL WORLD
@@ -21,11 +21,10 @@ REAL WORLD
 HETEROGENEOUS SOURCES
     |
     v
-ASSERTIONS
+OBSERVATIONS / ASSERTIONS / EVIDENCE
     |
-    +---- EVIDENCE
-    +---- ENTITIES / RELATIONS
-    +---- CONTEXT
+    v
+ENTITY + RELATION + CONTEXT
     |
     v
 RESOLUTION
@@ -33,33 +32,30 @@ RESOLUTION
     +---- RESOLVED
     +---- CONFLICT
     +---- UNCERTAIN
+    +---- INCOMPLETE
+    +---- REQUIRES_VERIFICATION
     |
     v
-OPERATIONAL STATE
-    |
-    +---- ERP
-    +---- AUTOMATION
-    +---- ATTESTATION
-    +---- INTELLIGENCE
+OPERATIONAL REPRESENTATION
 ```
 
 ## What this repository is
 
-This is initially a **research and specification laboratory**.
+This is a **research, semantic validation and reference-implementation laboratory**.
 
 It is not yet:
 
 - a finished protocol;
-- an SDK;
+- a public standard;
+- a general-purpose SDK;
 - a blockchain system;
-- a replacement for an ERP;
+- an ERP replacement;
+- a commercial product;
 - a claim of novelty.
 
-The repository exists to test whether the proposed layer is necessary, what its minimum semantics are, and how it relates to existing approaches.
+The repository exists to determine whether the proposed layer is necessary, what its minimum defensible semantics are, whether existing approaches already provide an equivalent composition, and whether the model survives real operational cases.
 
 ## Research program
-
-The project is organized as a research-to-product path:
 
 ```
 PROBLEM
@@ -76,93 +72,121 @@ REFERENCE IMPLEMENTATION
   ↓
 INTEGRATION
   ↓
-PRODUCT
+PRODUCT BOUNDARY
 ```
+
+## Repository structure
+
+```
+cases/
+  real operational problems and validation cases
+
+docs/
+  thesis, methodology, conceptual model, architecture and semantic status
+
+research/
+  experiments, comparisons, domain validation and system boundaries
+
+spec/
+  candidate specifications and identity-reference research
+
+reference-implementation/
+  minimal executable implementation of the current semantics
+```
+
+## Candidate semantic kernel
+
+```
+ENTITY
+RELATION
+ASSERTION
+EVIDENCE
+CONTEXT
+RESOLUTION
+```
+
+These remain hypotheses until they survive empirical, comparative and implementation tests.
 
 See:
 
-- docs/TASK-MAP.md — master research, validation, engineering and product task map.
-- docs/research-methodology.md — research and claim discipline.
-- docs/product-path.md — path from hypothesis to potential product.
+- [Conceptual Model](docs/conceptual-model.md)
+- [Semantic Status](docs/semantic-status.md)
+- [Reference Architecture](docs/architecture.md)
+- [Research Methodology](docs/research-methodology.md)
 
-## Initial primitives under investigation
+## Core research principles
 
-- **Entity** — an identifiable object, actor, document, device or other operational subject.
-- **Relation** — a relationship between entities.
-- **Assertion** — a claim about an entity, relation, state or expected state.
-- **Evidence** — material supporting an assertion.
-- **Context** — temporal, spatial, operational and policy information relevant to interpretation.
-- **Resolution** — the process of combining assertions, evidence, entities, relations and context into an operational representation.
+1. Preserve before resolving.
+2. Evidence is not assertion.
+3. Identity is not relation.
+4. Observation is not expectation.
+5. Conflict is information.
+6. Resolution is contextual.
+7. Intelligence does not become fact automatically.
+8. Consequence requires traceability.
+9. Determinism where possible, intelligence where necessary.
+10. Falsification before implementation.
 
-These are hypotheses, not final protocol primitives.
-
-## First case
+## Primary case
 
 **CASE-001 — Goods Receiving**
 
-A single receiving operation may contain:
+The receiving case combines fiscal documents, identifiers, camera/scanner observations, operator declarations and ERP records. It is the main real-world validation path.
 
-- an invoice/XML declaring an expected quantity;
-- product identifiers from different systems;
-- scanner observations;
-- camera observations;
-- operator declarations;
-- physical measurements;
-- ERP records.
+The current synthetic case does not require a scale. The next evidence required is the mapping of the actual workflow, source systems, identifiers, timestamps, manual interventions and operational decisions.
 
-The first objective is to determine exactly what information is lost when these representations are forced directly into a conventional operational state.
+See [CASE-001](cases/001-goods-receiving.md).
 
-## Research record
+## Reference implementation
 
-The repository preserves the experiments that produced the current hypothesis, including tests of:
+The current implementation deliberately proves only a small semantic loop:
 
-- identity and relations;
-- occurrence and events;
-- contradictory assertions;
-- temporal semantics;
-- expectation versus observation;
-- inference versus fact;
-- multiple identifiers and entities;
-- out-of-order observations;
-- attestation versus resolution;
-- event-driven versus assertion/resolution-driven models;
-- primitive reduction;
-- operational-question dependence.
+```
+Entity
+  ↓
+Identifier
+  ↓
+Observation
+  ↓
+Deterministic Resolution
+  ↓
+Existing Entity / Uncertain / Conflict
+```
 
-See research/experimental-record.md.
+It must not be allowed to silently define semantics that the research has not established.
 
-## Related work
+## Boundaries
 
-The investigation will explicitly compare itself with:
+ORC is designed to sit between heterogeneous representations and downstream operational systems.
 
-- entity resolution;
-- temporal data and temporal reasoning;
-- provenance;
-- W3C PROV;
-- evidence and uncertainty models;
-- truth maintenance;
-- belief revision;
-- complex event processing;
-- knowledge graphs;
-- digital twins;
-- event sourcing;
-- EPCIS;
-- ERP integration patterns.
+It does not own:
 
-The goal is not to rename an existing field, but to determine whether a distinct operational composition layer is justified.
+- physical observation mechanisms;
+- AI inference providers;
+- attestation systems;
+- ERP execution;
+- workflow engines.
+
+See [Reference Architecture](docs/architecture.md), [Intelligence Boundary](research/intelligence-boundary.md) and [Attestation Boundary](research/attestation-boundary.md).
+
+## Product separation
+
+The product emerging from the research is maintained separately in **3L0 Vision**.
+
+The ORC repository remains focused on:
+
+- research;
+- semantics;
+- falsification;
+- operational cases;
+- architecture boundaries;
+- candidate specifications;
+- reference implementation.
+
+3L0 Vision owns the product experience, interface, vision workflow, gamification, brand system and operational application.
 
 ## Status
 
 **Research / hypothesis validation**
 
-No claim of novelty is made at this stage.
-
-## Product experience
-
-The current product hypothesis is a simple field interface for operational resolution. Its visual identity is defined around capture, resolution and visible progress rather than e-commerce.
-
-- docs/interface-and-ux.md — screens, flows and UX principles.
-- docs/gamification.md — moderate, operational gamification model.
-- docs/brandbook.md — visual identity and symbol system.
-- assets/orc-symbol.svg — working ORC symbol.
-- spec/orc-identifier-standard.md — optional physical identity-reference/QR direction.
+No novelty conclusion has been established.
