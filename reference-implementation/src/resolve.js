@@ -29,10 +29,10 @@ export function resolveObservation({ observation, entities }) {
 
   if (uniqueEntities.length === 1) {
     const candidate = uniqueEntities[0];
-
     return {
       status: "RESOLVED",
       entity_id: candidate.entity.entity_id,
+      observation_id: observation.observation_id,
       matched_by: {
         scheme: candidate.matched_identifier.scheme,
         value: candidate.matched_identifier.value
@@ -45,6 +45,7 @@ export function resolveObservation({ observation, entities }) {
     return {
       status: "CONFLICT",
       entity_id: null,
+      observation_id: observation.observation_id,
       matched_by: null,
       candidates: uniqueEntities.map((candidate) => candidate.entity.entity_id)
     };
@@ -53,6 +54,7 @@ export function resolveObservation({ observation, entities }) {
   return {
     status: "UNCERTAIN",
     entity_id: null,
+    observation_id: observation.observation_id,
     matched_by: null,
     candidates: []
   };
