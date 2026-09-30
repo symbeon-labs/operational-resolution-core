@@ -1,93 +1,87 @@
-# Research-to-Product Path
+# Research-to-Product Boundary
 
-The project should not jump directly from conceptual research to a commercial system.
+ORC is the research and semantic core. Product development is maintained separately.
 
-## Stage 1 — Research
+## ORC
 
-Deliverables:
+ORC is responsible for:
 
-- problem statement;
-- conceptual model;
-- experiments;
+- problem investigation;
+- falsification;
+- semantic model;
+- operational cases;
 - comparative analysis;
-- real-world cases.
+- architecture boundaries;
+- candidate specification;
+- reference implementation;
+- integration research.
 
-Output:
+## Product layer
 
-**Validated or weakened hypothesis.**
+The current product implementation is **3L0 Vision**.
 
-## Stage 2 — Semantic core
+3L0 Vision is responsible for:
 
-Deliverables:
+- operator experience;
+- application screens;
+- camera/vision workflow;
+- OCR integration;
+- product registration workflow;
+- ERP application integration;
+- gamification;
+- brand system;
+- field hardware and deployment UX.
 
-- candidate data model;
-- resolution semantics;
-- conflict model;
-- provenance;
-- temporal model;
-- reproducibility rules.
+The product may consume ORC semantics or interfaces without becoming part of the ORC research repository.
 
-Output:
+## Research-to-product path
 
-**Candidate specification.**
+```
+ORC RESEARCH
+    ↓
+validated semantics
+    ↓
+reference implementation
+    ↓
+integration boundary
+    ↓
+3L0 Vision / other products
+```
 
-## Stage 3 — Reference implementation
+## Stages
 
-Deliverables:
+### Stage 1 — Research
 
-- core engine;
-- persistence;
-- resolution pipeline;
-- audit;
-- test suite;
-- minimal API.
+Problem, experiments, comparison and real-world cases.
 
-Output:
+Output: validated or weakened hypothesis.
 
-**Executable reference implementation.**
+### Stage 2 — Semantic core
 
-## Stage 4 — Operational pilot
+Candidate data model, resolution semantics, conflict, provenance, temporal model and reproducibility.
 
-Use a controlled real workflow.
+Output: candidate specification.
 
-Modes:
+### Stage 3 — Reference implementation
 
-1. observe;
-2. shadow;
-3. recommend;
-4. human-confirm;
-5. selectively automate.
+Executable core demonstrating the semantics.
 
-Output:
+Output: reference implementation.
 
-**Measured operational evidence.**
+### Stage 4 — Operational pilot
 
-## Stage 5 — Integration platform
+Controlled real workflow in observe, shadow, recommend, human-confirm and selective automation modes.
 
-Potential interfaces:
+Output: measured operational evidence.
 
-- ERP;
-- fiscal documents;
-- scanners;
-- cameras;
-- sensors;
-- inference systems;
-- attestation systems;
-- workflow systems.
+### Stage 5 — Integration
 
-Output:
+ERP, fiscal documents, scanners, cameras, sensors, inference and attestation boundaries.
 
-**Reusable infrastructure boundary.**
+Output: reusable infrastructure boundary.
 
-## Stage 6 — Product
+### Stage 6 — Product
 
-Only after evidence supports it, determine whether the appropriate product is:
+A product form is determined only after evidence supports it.
 
-- API;
-- SDK;
-- platform;
-- infrastructure service;
-- domain solution;
-- enterprise deployment.
-
-The product form must emerge from the validated problem rather than precede it.
+ORC does not assume that the product must be an API, SDK, platform or application.
