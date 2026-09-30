@@ -42,12 +42,6 @@ const evidence = [
     type: "operator_declaration",
     source: { type: "operator", id: "operator-01" },
     capturedAt: "2026-09-30T10:00:05-03:00"
-  }),
-  createEvidence({
-    evidenceId: "orc:evidence:scale-001",
-    type: "scale_record",
-    source: { type: "scale", id: "scale-01" },
-    capturedAt: "2026-09-30T10:00:06-03:00"
   })
 ];
 
@@ -71,16 +65,6 @@ const assertions = [
     source: { type: "operator", id: "operator-01" },
     context: { operation: "goods_receiving", semantic: "declared" },
     supportedBy: ["orc:evidence:operator-001"]
-  }),
-  createAssertion({
-    assertionId: "orc:assertion:scale-001",
-    subject: product.entity_id,
-    predicate: "quantity",
-    value: 97,
-    assertedAt: "2026-09-30T10:00:06-03:00",
-    source: { type: "scale", id: "scale-01" },
-    context: { operation: "goods_receiving", semantic: "observed" },
-    supportedBy: ["orc:evidence:scale-001"]
   })
 ];
 
@@ -92,7 +76,4 @@ const quantity = resolveQuantity({
   context: { operation: "goods_receiving" }
 });
 
-console.log(JSON.stringify({
-  identity,
-  quantity
-}, null, 2));
+console.log(JSON.stringify({ identity, quantity }, null, 2));
