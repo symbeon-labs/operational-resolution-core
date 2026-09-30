@@ -57,6 +57,34 @@ It is not yet:
 
 The repository exists to test whether the proposed layer is necessary, what its minimum semantics are, and how it relates to existing approaches.
 
+## Research program
+
+The project is organized as a research-to-product path:
+
+```
+PROBLEM
+  ↓
+EXPERIMENTS
+  ↓
+FALSIFICATION
+  ↓
+REAL-WORLD VALIDATION
+  ↓
+SEMANTICS
+  ↓
+REFERENCE IMPLEMENTATION
+  ↓
+INTEGRATION
+  ↓
+PRODUCT
+```
+
+See:
+
+- docs/TASK-MAP.md — master research, validation, engineering and product task map.
+- docs/research-methodology.md — research and claim discipline.
+- docs/product-path.md — path from hypothesis to potential product.
+
 ## Initial primitives under investigation
 
 - **Entity** — an identifiable object, actor, document, device or other operational subject.
@@ -84,31 +112,24 @@ A single receiving operation may contain:
 
 The first objective is to determine exactly what information is lost when these representations are forced directly into a conventional operational state.
 
-## Research direction
+## Research record
 
-```
-REAL OPERATION
-    ->
-CASE
-    ->
-OBSERVATIONS
-    ->
-ASSERTIONS
-    ->
-EVIDENCE
-    ->
-CONTEXT
-    ->
-RESOLUTION
-    ->
-OPERATIONAL STATE
-    ->
-DOWNSTREAM SYSTEMS
-    ->
-SPECIFICATION
-```
+The repository preserves the experiments that produced the current hypothesis, including tests of:
 
-Only after the cases are sufficiently understood should implementation or protocol design begin.
+- identity and relations;
+- occurrence and events;
+- contradictory assertions;
+- temporal semantics;
+- expectation versus observation;
+- inference versus fact;
+- multiple identifiers and entities;
+- out-of-order observations;
+- attestation versus resolution;
+- event-driven versus assertion/resolution-driven models;
+- primitive reduction;
+- operational-question dependence.
+
+See research/experimental-record.md.
 
 ## Related work
 
@@ -117,12 +138,15 @@ The investigation will explicitly compare itself with:
 - entity resolution;
 - temporal data and temporal reasoning;
 - provenance;
-- event processing;
-- knowledge graphs;
+- W3C PROV;
 - evidence and uncertainty models;
 - truth maintenance;
 - belief revision;
-- supply-chain event standards;
+- complex event processing;
+- knowledge graphs;
+- digital twins;
+- event sourcing;
+- EPCIS;
 - ERP integration patterns.
 
 The goal is not to rename an existing field, but to determine whether a distinct operational composition layer is justified.
