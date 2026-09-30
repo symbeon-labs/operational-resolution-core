@@ -1,54 +1,30 @@
-# Conceptual Model
+# Minimal Computable Layer
 
-The current investigation uses six working concepts.
+## Research question
 
-## Entity
+> What is the minimum persistent representation required for a system to recognize a physical entity, associate new evidence with it, and operate on it without reconstructing its identity from scratch?
 
-An identifiable operational subject: product, person, device, document, location, transaction or other object.
+We provisionally call this the **minimal computable layer**.
 
-## Relation
-
-A relationship between entities, such as located_at, transported_by, contained_in or associated_with.
-
-## Assertion
-
-A claim about an entity, relation, state or expected state.
-
-## Evidence
-
-A source or artifact that supports an assertion: document, image, sensor reading, scan, signature, log or other verifiable material.
-
-## Context
-
-Information required to interpret an assertion or resolution: time, location, operation, policy, source characteristics and applicable rules.
-
-## Resolution
-
-A contextual process that combines available assertions, evidence, entities, relations and rules to produce an operational representation.
-
-The concepts remain provisional and are subject to falsification.
-
----
-
-# Product Identity and the Minimal Computable Layer
-
-The establishment case introduced a more specific question:
-
-> What is the minimum persistent representation required for a system to recognize a physical product, associate new evidence with it, and operate on it without reconstructing its identity from scratch?
-
-We provisionally call this the **minimal computable layer of a product**.
-
-This is a research concept, not a claim of a new standard.
+This is a research concept, not a new standard.
 
 ## Three levels
 
-### 1. Physical product
+### 1. Physical entity
 
 The real-world object.
 
 ### 2. Minimal computable layer
 
-The persistent digital representation that allows the system to recognize or reference the physical entity, associate multiple identifiers, attach observations and evidence, preserve assertions and provenance, track changes and relations, resolve future observations against the same entity, and expose the entity to operational systems.
+The persistent digital representation that allows a system to:
+
+- recognize or reference the physical entity;
+- associate multiple identifiers;
+- attach observations and evidence;
+- preserve assertions and provenance;
+- track changes and relations;
+- resolve future observations against the same entity;
+- expose the entity to downstream operational systems.
 
 The minimum is therefore not a product description. It is the minimum **operationally persistent identity representation**.
 
@@ -65,46 +41,32 @@ Examples:
 - asset transferred;
 - item requiring verification.
 
-The operational representation may change while the underlying product entity persists.
+The operational representation may change while the underlying entity persists.
 
----
+## Identity is not the identifier
 
-# Identity is not the identifier
+A QR code, NFC tag, EAN, SKU, manufacturer code or internal code is an identifier or access mechanism. It is not necessarily the entity itself.
 
-A QR code, NFC tag, EAN, SKU, manufacturer code or internal code is not necessarily the product identity itself.
+A generated QR should therefore be treated as an **Identity Reference**, not as the entity.
 
-They are identifiers or access mechanisms that can be associated with the same persistent entity.
+```
+ENTITY
+  ├── EAN
+  ├── SKU
+  ├── manufacturer code
+  ├── internal code
+  ├── QR / identity reference
+  ├── NFC / identity reference
+  └── other identifiers
+```
 
-The distinction is especially important for generated QR labels.
+Identifiers can coexist, change, be duplicated, become unreadable, belong to different systems or provide different levels of determinism.
 
-A generated QR should be treated as an **Identity Reference**, not as the entity itself.
+## Physical labels are optional
 
-The QR should preferably contain a stable opaque reference to an entity rather than mutable operational data such as price, stock, supplier or fiscal state.
+ORC must not depend on a printed label.
 
-~~~text
-PRODUCT ENTITY
-    ├── EAN
-    ├── SKU
-    ├── manufacturer code
-    ├── internal code
-    ├── QR / identity reference
-    ├── NFC / identity reference
-    └── other identifiers
-~~~
-
-Identifiers can change, coexist, be duplicated, become unreadable, belong to different systems, or provide different levels of determinism.
-
-The system should therefore attempt to resolve an incoming identifier or observation against an existing entity before creating a new one.
-
----
-
-# Physical labels are optional
-
-The ORC architecture must not depend on the existence of a printed label.
-
-A physical label is one possible materialization of an identity reference.
-
-~~~text
+```
                     ORC
                      |
           +----------+----------+
@@ -115,139 +77,89 @@ A physical label is one possible materialization of an identity reference.
                      |
               identity reference
                      |
-                PRODUCT ENTITY
-~~~
+                    ENTITY
+```
 
-The same entity may also be resolved without a generated marker:
+Markerless resolution remains first-class:
 
-~~~text
-camera / image
-      |
-      +---- OCR
-      +---- visual observations
-      +---- visible identifiers
-      +---- context
-      |
-      v
-  observations
-      |
-      v
-   resolution
-      |
-      v
-PRODUCT ENTITY
-~~~
+```
+image / document / context
+          |
+       OCR / vision
+          |
+     observations
+          |
+      resolution
+          |
+        ENTITY
+```
 
-Therefore:
+Labels may improve deterministic identification and operational speed, but they are not a prerequisite for the core.
 
-> **ORC can exist without labels.**
-
-Labels improve deterministic identification and operational speed, but they are not a prerequisite for the core.
-
----
-
-# Identity is not the identifier
-
-A QR code, NFC tag, EAN, SKU, manufacturer code or internal code is not necessarily the product identity itself.
-
-They are identifiers or access mechanisms that can be associated with the same persistent entity.
-
-~~~
-PRODUCT ENTITY
-    ├── EAN
-    ├── SKU
-    ├── manufacturer code
-    ├── internal code
-    ├── QR
-    ├── NFC
-    └── other identifiers
-~~~
-
-Identifiers can change, coexist, be duplicated, be missing, become unreadable, belong to different systems, or provide different levels of determinism.
-
-The system should therefore attempt to resolve an incoming identifier or observation against an existing entity before creating a new one.
-
----
-
-# Evidence is not identity
+## Evidence is not identity
 
 A camera image, OCR result, barcode scan, NFC read, document or operator declaration can provide evidence about an entity.
 
-They should not automatically become the identity of that entity.
+They should remain distinguishable from the persistent entity itself.
 
-~~~
-physical product
+```
+physical entity
       |
       +---- observation
-      |       |
-      |       +---- image
-      |       +---- OCR
-      |       +---- barcode
-      |       +---- NFC
-      |       +---- sensor
-      |       +---- document
-      |       +---- operator
-      |
-      v
-   assertions
+      +---- evidence
+      +---- assertion
       |
       v
    resolution
       |
       v
- persistent product entity
-~~~
+ persistent entity representation
+```
 
-This preserves the distinction between what was observed, what was asserted, and what the system resolved.
+## Created once, resolved many times
 
----
+A provisional principle from the field case is:
 
-# Created once, resolved many times
+> **A physical entity can be created once and resolved many times.**
 
-A provisional principle emerging from the field case is:
+The first encounter with an unknown entity may require multimodal interpretation.
 
-> **A physical product entity can be created once and resolved many times.**
-
-The first encounter with an unknown product may require multimodal interpretation.
-
-~~~
+```
 image + OCR + EAN + context + operator
                     |
                     v
                 RESOLUTION
                     |
                     v
-             PRODUCT ENTITY
-~~~
+                  ENTITY
+```
 
-Subsequent encounters should preferentially use the established identity.
+Subsequent encounters should preferentially use established identity:
 
-~~~
-QR / NFC / EAN / known identifier
-              |
-              v
-       EXISTING ENTITY
-              |
-              v
-       new observation
-              |
-              v
-       operational action
-~~~
+```
+known identifier
+      |
+      v
+existing entity
+      |
+      v
+new observation
+      |
+      v
+operational action
+```
 
-This suggests a potentially important asymmetry:
+This suggests an asymmetry:
 
 > **The first encounter is intelligence-heavy. Subsequent encounters should become identity-heavy.**
 
-This is a hypothesis to test, not an implementation requirement.
+This remains a hypothesis to test.
 
----
-
-# Candidate product entity representation
+## Candidate representation
 
 A future reference model may need some or all of:
 
-~~~
+```
 entity_id
 identifiers
 attributes
@@ -256,49 +168,16 @@ evidence
 observations
 assertions
 resolution_history
-erp_mappings
-~~~
+downstream_mappings
+```
 
-No field is final at this stage.
+No field is final.
 
-The key requirement is semantic: the representation must persist enough information to avoid reconstructing identity from scratch during every subsequent operation.
+The semantic requirement is that enough information persists to avoid reconstructing identity from scratch during every subsequent operation.
 
----
+## Research boundary
 
-# Interface versus core
-
-The field application should not be confused with the underlying product.
-
-A candidate architecture is:
-
-~~~
-                    ORC
-                     |
-          +----------+----------+
-          |          |          |
-        Mobile      API        SDK
-          |
-          v
-   Camera / Scanner
-      QR / NFC
-          |
-          v
-   Product Entity
-          |
-          v
-  Operational Systems
-     (ERP / Apollo)
-~~~
-
-The mobile application is therefore a **field interface / terminal** for the resolution infrastructure.
-
-The core research question remains the resolution layer, not the app.
-
----
-
-# Research boundary
-
-This model does not yet establish:
+This model does not establish:
 
 - a canonical product schema;
 - a universal physical identity standard;
@@ -306,6 +185,6 @@ This model does not yet establish:
 - that visual recognition is sufficiently reliable;
 - that every physical object needs a generated identifier;
 - that ORC must become a commercial product;
-- that the proposed model is novel.
+- that the abstraction is novel.
 
-The immediate objective is to determine whether the minimal computable layer is a useful and defensible abstraction for the real operational cases under investigation.
+The next tests must determine whether the minimal computable layer is useful and defensible across real operational cases.
