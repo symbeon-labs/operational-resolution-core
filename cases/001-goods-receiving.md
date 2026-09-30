@@ -4,7 +4,7 @@
 
 Test the operational resolution hypothesis against a real receiving workflow.
 
-The case begins when a product is expected to arrive and ends when the operational system must decide whether the receipt can be confirmed automatically.
+The case begins when a product is expected to arrive and ends when the operational system must decide what can be confirmed automatically.
 
 ## Scenario
 
@@ -25,46 +25,43 @@ Name: Product X
 Stock before operation: 0
 ```
 
-During receiving, multiple sources produce representations:
+During receiving, the system may obtain:
 
-| Source | Assertion |
+| Source | Representation |
 |---|---|
 | NF-e/XML | 100 units expected |
 | Scanner | EAN 789000... observed |
 | Camera | Product X observed |
 | Operator | 100 units declared |
-| Scale | 97 units measured |
-| ERP | 97 units recorded |
+| ERP | existing product record |
+
+The case does not require a scale.
 
 ## Initial problem
 
 These sources do not necessarily represent the same semantic fact.
 
-They provide different assertions about:
+They provide different representations of:
 
 - identity;
 - expected quantity;
-- observed quantity;
 - declared quantity;
-- recorded quantity.
+- existing ERP state.
 
-The system must determine what can safely be concluded.
+The system must determine what can safely be concluded without discarding provenance.
 
 ## Candidate resolution
 
 ```
 Product identity: RESOLVED
 Expected quantity: 100
-Observed quantity: 97
 Operator declaration: 100
 
-Conflict: YES
-Evidence sources: XML + scanner + camera + operator + scale
-Operational state: REQUIRES VERIFICATION
-Automatic receipt confirmation: NO
+Quantity: RESOLVED
+Operational state: ready for the next receiving rule
 ```
 
-This is only a candidate result. The case is intentionally open to falsification.
+This is only a candidate result. The case remains open to falsification.
 
 ## Questions
 
@@ -78,7 +75,7 @@ This is only a candidate result. The case is intentionally open to falsification
 
 ## Next evidence required
 
-This synthetic case should be replaced or expanded with an actual receiving workflow from the establishment.
+This synthetic case should be expanded with an actual receiving workflow from the establishment.
 
 The next investigation should map:
 
@@ -90,8 +87,6 @@ real identifiers
 real observations
     ->
 real ERP records
-    ->
-real conflicts
     ->
 real operational decision
 ```
