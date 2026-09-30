@@ -1,67 +1,105 @@
 # Research Map
 
-This map records the current investigation as a sequence of questions rather than as a finished architecture.
+This map records the investigation as questions and evidence, not as a finished architecture.
 
-## Phase 1 — Representation problem
+## 1 — Representation problem
 
-REAL WORLD -> MULTIPLE REPRESENTATIONS -> POTENTIAL DISAGREEMENT
+```
+REAL WORLD
+  ↓
+MULTIPLE REPRESENTATIONS
+  ↓
+POTENTIAL DISAGREEMENT
+```
 
-Question: What is lost when heterogeneous representations are collapsed directly into operational records?
+Question: what is lost when heterogeneous representations are collapsed directly into operational records?
 
-## Phase 2 — Conceptual decomposition
+## 2 — Conceptual decomposition
 
+```
 ENTITY / RELATION / ASSERTION / EVIDENCE / CONTEXT
+```
 
-Question: Are these sufficient to describe the information involved before resolution?
+Question: are these sufficient to represent the information involved before resolution?
 
-## Phase 3 — Resolution
+## 3 — Resolution
 
-ASSERTIONS + EVIDENCE + CONTEXT + RULES -> RESOLUTION -> OPERATIONAL REPRESENTATION
+```
+ASSERTIONS + EVIDENCE + ENTITIES + RELATIONS + CONTEXT + RULES
+                         ↓
+                     RESOLUTION
+                         ↓
+              OPERATIONAL REPRESENTATION
+```
 
-Question: What exactly does resolution mean, and what outcomes can it produce?
+Question: what exactly does resolution mean, and what outcomes can it produce?
 
-## Phase 4 — Conflict
+## 4 — Conflict
 
-SOURCE A = X; SOURCE B = Y
+Question: is disagreement an error to eliminate or information to preserve?
 
-Question: Is disagreement an error to eliminate, or information to preserve?
+Current hypothesis: conflict is a first-class operational condition.
 
-Current hypothesis: Conflict is a first-class operational condition.
+## 5 — Time
 
-## Phase 5 — Temporal reasoning
+Question: how can observation, validity and recording time be represented without overwriting history?
 
-Question: How can observations, validity and recording be represented without overwriting historical information?
+Current hypothesis: multiple temporal dimensions may be required.
 
-Current hypothesis: Time requires more than one semantic dimension.
+## 6 — Intelligence boundary
 
-## Phase 6 — Intelligence boundary
+Question: where does inference end and resolution begin?
 
-Question: Where does inference end and resolution begin?
+Current hypothesis: inference may produce assertions; resolution determines how they participate in an operational conclusion.
 
-Current hypothesis: Inference may produce assertions; resolution determines how those assertions participate in an operational conclusion.
+See [Intelligence Boundary](intelligence-boundary.md).
 
-## Phase 7 — Evidence boundary
+## 7 — Evidence and attestation boundary
 
-Question: Where does evidence production end and resolution begin?
+Question: where does evidence/provenance attestation end and resolution begin?
 
-Current hypothesis: Evidence supports assertions; resolution evaluates assertions and their evidence in context.
+Current hypothesis: attestation can support a resolution but is not equivalent to resolution.
 
-## Phase 8 — Existing approaches
+See [Attestation Boundary](attestation-boundary.md).
 
-Question: Is this already adequately solved?
+## 8 — Existing approaches
 
-Comparison targets: entity resolution; provenance; temporal reasoning; evidence theory; truth maintenance; belief revision; complex event processing; knowledge graphs; event sourcing; EPCIS.
+Question: is this already adequately solved?
 
-Status: Open.
+Comparison targets include entity resolution, temporal reasoning, W3C PROV, evidence theory, truth maintenance, belief revision, complex event processing, knowledge graphs, digital twins, event sourcing and EPCIS.
 
-## Phase 9 — Real-world validation
+Status: open.
 
-Primary case: Goods receiving.
+See [Comparative Matrix](comparison-matrix.md).
 
-The next evidence must come from a real operational workflow.
+## 9 — Real-world validation
 
-## Phase 10 — Specification
+Primary case: goods receiving.
 
-CASES -> EXPERIMENTS -> COMPARISON -> SEMANTICS -> CANDIDATE SPECIFICATION -> IMPLEMENTATION
+The next evidence must come from an actual operational workflow.
+
+## 10 — Domain generalization
+
+Product data, sale, return, inventory, transfer and other workflows test whether the model survives without ad-hoc primitives.
+
+## 11 — Specification
+
+```
+CASES
+  ↓
+EXPERIMENTS
+  ↓
+COMPARISON
+  ↓
+SEMANTICS
+  ↓
+CANDIDATE SPECIFICATION
+  ↓
+REFERENCE IMPLEMENTATION
+```
 
 The ordering is intentional.
+
+## Current research rule
+
+Do not promote a concept to the normative core merely because it is useful in the product. It must survive the research tests first.
