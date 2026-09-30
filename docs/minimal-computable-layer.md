@@ -75,6 +75,83 @@ A QR code, NFC tag, EAN, SKU, manufacturer code or internal code is not necessar
 
 They are identifiers or access mechanisms that can be associated with the same persistent entity.
 
+The distinction is especially important for generated QR labels.
+
+A generated QR should be treated as an **Identity Reference**, not as the entity itself.
+
+The QR should preferably contain a stable opaque reference to an entity rather than mutable operational data such as price, stock, supplier or fiscal state.
+
+~~~text
+PRODUCT ENTITY
+    ├── EAN
+    ├── SKU
+    ├── manufacturer code
+    ├── internal code
+    ├── QR / identity reference
+    ├── NFC / identity reference
+    └── other identifiers
+~~~
+
+Identifiers can change, coexist, be duplicated, become unreadable, belong to different systems, or provide different levels of determinism.
+
+The system should therefore attempt to resolve an incoming identifier or observation against an existing entity before creating a new one.
+
+---
+
+# Physical labels are optional
+
+The ORC architecture must not depend on the existence of a printed label.
+
+A physical label is one possible materialization of an identity reference.
+
+~~~text
+                    ORC
+                     |
+          +----------+----------+
+          |          |          |
+         QR         EAN        NFC
+          |          |          |
+          +----------+----------+
+                     |
+              identity reference
+                     |
+                PRODUCT ENTITY
+~~~
+
+The same entity may also be resolved without a generated marker:
+
+~~~text
+camera / image
+      |
+      +---- OCR
+      +---- visual observations
+      +---- visible identifiers
+      +---- context
+      |
+      v
+  observations
+      |
+      v
+   resolution
+      |
+      v
+PRODUCT ENTITY
+~~~
+
+Therefore:
+
+> **ORC can exist without labels.**
+
+Labels improve deterministic identification and operational speed, but they are not a prerequisite for the core.
+
+---
+
+# Identity is not the identifier
+
+A QR code, NFC tag, EAN, SKU, manufacturer code or internal code is not necessarily the product identity itself.
+
+They are identifiers or access mechanisms that can be associated with the same persistent entity.
+
 ~~~
 PRODUCT ENTITY
     ├── EAN
