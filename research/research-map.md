@@ -52,7 +52,7 @@ Question: where does inference end and resolution begin?
 
 Current hypothesis: inference may produce assertions; resolution determines how they participate in an operational conclusion.
 
-See [Intelligence Boundary](intelligence-boundary.md).
+See [Intelligence Boundary](boundaries/intelligence.md).
 
 ## 7 — Evidence and attestation boundary
 
@@ -60,7 +60,7 @@ Question: where does evidence/provenance attestation end and resolution begin?
 
 Current hypothesis: attestation can support a resolution but is not equivalent to resolution.
 
-See [Attestation Boundary](attestation-boundary.md).
+See [Attestation Boundary](boundaries/attestation.md).
 
 ## 8 — Existing approaches
 
@@ -70,7 +70,7 @@ Comparison targets include entity resolution, temporal reasoning, W3C PROV, evid
 
 Status: open.
 
-See [Comparative Matrix](comparison-matrix.md).
+See [Comparative Matrix](comparative/comparison-matrix.md).
 
 ## 9 — Real-world validation
 
