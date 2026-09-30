@@ -6,7 +6,8 @@ export function createAssertion({
   assertedAt,
   source,
   context = {},
-  basedOn = []
+  basedOn = [],
+  supportedBy = []
 } = {}) {
   if (!assertionId) throw new Error("assertionId is required");
   if (!subject) throw new Error("subject is required");
@@ -23,6 +24,7 @@ export function createAssertion({
     asserted_at: assertedAt,
     source,
     context: { ...context },
-    based_on: [...basedOn]
+    based_on: [...basedOn],
+    supported_by: [...supportedBy]
   };
 }
